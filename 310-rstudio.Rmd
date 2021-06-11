@@ -2,7 +2,7 @@
 
 Hi everyone, welcome to the R section of the data learning labs! What is R? R is a programming language. Other programming languages include Python, Java, C, and more. Different programming languages are better for different tasks. R is commonly used for data analysis and visualizations. Many people use a tool called RStudio, which we will over the next few days. RStudio allows you to write code in R, run that code, and more!
 
-In this chapter, we walk through RStudio so you have an understanding of its main functionality and its relationship with the R programming language. If you have not yet installed R and RStudio, please refer to the (Pre-Workshop Installation Guide)[https://tinyurl.com/ssrpsoftwareguide] and follow the instructions to install R and RStudio. Follow along with the steps below on your own computer. _There is a video at the end that walks through most of the content as well._
+In this chapter, we walk through RStudio so you have an understanding of its main functionality and its relationship with the R programming language. If you have not yet installed R and RStudio, please refer to the !(Pre-Workshop Installation Guide)[https://tinyurl.com/ssrpsoftwareguide] and follow the instructions to install R and RStudio. Follow along with the steps below on your own computer. _There is a video at the end that walks through most of the content as well._
 
 ### R Scripts in RStudio
 When you first open RStudio, it will look something like this. ![RStudio Homepage](./img/r_basics/Fig1.png)
