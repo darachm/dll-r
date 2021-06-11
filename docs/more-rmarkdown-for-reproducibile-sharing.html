@@ -159,7 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="using-rstudio.html"><a href="using-rstudio.html#files-plots-and-packages"><i class="fa fa-check"></i><b>2.1.4</b> Files, Plots, and Packages</a></li>
 <li class="chapter" data-level="2.1.5" data-path="using-rstudio.html"><a href="using-rstudio.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.1.5</b> Putting It All Together</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
+<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="using-rmds.html"><a href="using-rmds.html#basic-structure"><i class="fa fa-check"></i><b>2.2.1</b> Basic Structure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-markdown"><i class="fa fa-check"></i><b>2.2.2</b> Overview of Markdown</a></li>
+<li class="chapter" data-level="2.2.3" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-how-to-write-an-r-chunk"><i class="fa fa-check"></i><b>2.2.3</b> Overview of how to write an R chunk</a></li>
+<li class="chapter" data-level="2.2.4" data-path="using-rmds.html"><a href="using-rmds.html#final-thoughts"><i class="fa fa-check"></i><b>2.2.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
@@ -330,9 +336,9 @@ x &lt;- 1:10
 y &lt;- 1:10
 plot(x,y)
 ```</code></pre>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb373-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb373-2"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb373-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb373-3"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb373-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb375-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb375-2"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb375-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb375-3"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code></pre></div>
 <p><img src="560-rmarkdown-and-repro_files/figure-html/name_of_chunk-1.png" width="288" style="display: block; margin: auto 0 auto auto;" /></p>
 <p>It is possible to enable figure captions.</p>
 <p>video2 chunk options
@@ -397,7 +403,7 @@ into HTML, PDF, and/or slides.</p>
 <li>what packages you’re using</li>
 <li></li>
 </ul>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb376-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="more-rmarkdown-for-reproducibile-sharing.html#cb378-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)

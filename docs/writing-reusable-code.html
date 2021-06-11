@@ -159,7 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="using-rstudio.html"><a href="using-rstudio.html#files-plots-and-packages"><i class="fa fa-check"></i><b>2.1.4</b> Files, Plots, and Packages</a></li>
 <li class="chapter" data-level="2.1.5" data-path="using-rstudio.html"><a href="using-rstudio.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.1.5</b> Putting It All Together</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
+<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="using-rmds.html"><a href="using-rmds.html#basic-structure"><i class="fa fa-check"></i><b>2.2.1</b> Basic Structure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-markdown"><i class="fa fa-check"></i><b>2.2.2</b> Overview of Markdown</a></li>
+<li class="chapter" data-level="2.2.3" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-how-to-write-an-r-chunk"><i class="fa fa-check"></i><b>2.2.3</b> Overview of how to write an R chunk</a></li>
+<li class="chapter" data-level="2.2.4" data-path="using-rmds.html"><a href="using-rmds.html#final-thoughts"><i class="fa fa-check"></i><b>2.2.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
@@ -311,15 +317,15 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)
 <a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p>Here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="writing-reusable-code.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></span>
-<span id="cb370-2"><a href="writing-reusable-code.html#cb370-2" aria-hidden="true" tabindex="-1"></a>bad_index <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(DBC_known_counts))</span>
-<span id="cb370-3"><a href="writing-reusable-code.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(bad_index)){</span>
-<span id="cb370-4"><a href="writing-reusable-code.html#cb370-4" aria-hidden="true" tabindex="-1"></a>        counts <span class="ot">=</span> <span class="fu">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb370-5"><a href="writing-reusable-code.html#cb370-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">which</span>(counts <span class="sc">!=</span> <span class="dv">0</span>)) <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> <span class="fu">max</span>(counts) <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> <span class="fu">sum</span>(counts) <span class="sc">&lt;</span> <span class="dv">10</span>){</span>
-<span id="cb370-6"><a href="writing-reusable-code.html#cb370-6" aria-hidden="true" tabindex="-1"></a>                bad_index[i] <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb370-7"><a href="writing-reusable-code.html#cb370-7" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb370-8"><a href="writing-reusable-code.html#cb370-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb370-9"><a href="writing-reusable-code.html#cb370-9" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(bad_index <span class="sc">==</span> <span class="dv">1</span>)) <span class="co"># 1447775</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="writing-reusable-code.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></span>
+<span id="cb372-2"><a href="writing-reusable-code.html#cb372-2" aria-hidden="true" tabindex="-1"></a>bad_index <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(DBC_known_counts))</span>
+<span id="cb372-3"><a href="writing-reusable-code.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(bad_index)){</span>
+<span id="cb372-4"><a href="writing-reusable-code.html#cb372-4" aria-hidden="true" tabindex="-1"></a>        counts <span class="ot">=</span> <span class="fu">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb372-5"><a href="writing-reusable-code.html#cb372-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">which</span>(counts <span class="sc">!=</span> <span class="dv">0</span>)) <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">|</span> <span class="fu">max</span>(counts) <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> <span class="fu">sum</span>(counts) <span class="sc">&lt;</span> <span class="dv">10</span>){</span>
+<span id="cb372-6"><a href="writing-reusable-code.html#cb372-6" aria-hidden="true" tabindex="-1"></a>                bad_index[i] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb372-7"><a href="writing-reusable-code.html#cb372-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb372-8"><a href="writing-reusable-code.html#cb372-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb372-9"><a href="writing-reusable-code.html#cb372-9" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(bad_index <span class="sc">==</span> <span class="dv">1</span>)) <span class="co"># 1447775</span></span></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -329,22 +335,22 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 </ul>
 <hr />
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="writing-reusable-code.html#cb371-1" aria-hidden="true" tabindex="-1"></a>Random_reference <span class="ot">&lt;-</span> <span class="cf">function</span>(PPI_multiple, all_PPI_filtered, size, sampling_number){</span>
-<span id="cb371-2"><a href="writing-reusable-code.html#cb371-2" aria-hidden="true" tabindex="-1"></a>  PPI_PPiseq <span class="ot">=</span> PPI_multiple[,<span class="dv">1</span>]</span>
-<span id="cb371-3"><a href="writing-reusable-code.html#cb371-3" aria-hidden="true" tabindex="-1"></a>  RRS_size<span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb371-4"><a href="writing-reusable-code.html#cb371-4" aria-hidden="true" tabindex="-1"></a>  RRS<span class="ot">=</span> <span class="fu">character</span>(<span class="at">length=</span><span class="dv">0</span>)</span>
-<span id="cb371-5"><a href="writing-reusable-code.html#cb371-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (RRS_size <span class="sc">&lt;</span> size) {</span>
-<span id="cb371-6"><a href="writing-reusable-code.html#cb371-6" aria-hidden="true" tabindex="-1"></a>    yeast_PPI_random<span class="ot">=</span> all_PPI_filtered[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span> <span class="fu">length</span>(all_PPI_filtered), sampling_number, <span class="at">replace=</span>F)]</span>
-<span id="cb371-7"><a href="writing-reusable-code.html#cb371-7" aria-hidden="true" tabindex="-1"></a>    RRS<span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">c</span>(RRS, yeast_PPI_random))</span>
-<span id="cb371-8"><a href="writing-reusable-code.html#cb371-8" aria-hidden="true" tabindex="-1"></a>    RRS_overlap<span class="ot">=</span> <span class="fu">intersect</span>(RRS, PPI_PPiseq)</span>
-<span id="cb371-9"><a href="writing-reusable-code.html#cb371-9" aria-hidden="true" tabindex="-1"></a>    RRS_size<span class="ot">=</span> <span class="fu">length</span>(RRS_overlap)</span>
-<span id="cb371-10"><a href="writing-reusable-code.html#cb371-10" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb371-11"><a href="writing-reusable-code.html#cb371-11" aria-hidden="true" tabindex="-1"></a>  RRS_duplicate_marked <span class="ot">=</span> <span class="fu">mark_duplicates_fast</span>(RRS_overlap)</span>
-<span id="cb371-12"><a href="writing-reusable-code.html#cb371-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (RRS_duplicate_marked[,<span class="dv">1</span>])</span>
-<span id="cb371-13"><a href="writing-reusable-code.html#cb371-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb371-14"><a href="writing-reusable-code.html#cb371-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb371-15"><a href="writing-reusable-code.html#cb371-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ... and later ...</span></span>
-<span id="cb371-16"><a href="writing-reusable-code.html#cb371-16" aria-hidden="true" tabindex="-1"></a><span class="fu">Random_reference</span>(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="writing-reusable-code.html#cb373-1" aria-hidden="true" tabindex="-1"></a>Random_reference <span class="ot">&lt;-</span> <span class="cf">function</span>(PPI_multiple, all_PPI_filtered, size, sampling_number){</span>
+<span id="cb373-2"><a href="writing-reusable-code.html#cb373-2" aria-hidden="true" tabindex="-1"></a>  PPI_PPiseq <span class="ot">=</span> PPI_multiple[,<span class="dv">1</span>]</span>
+<span id="cb373-3"><a href="writing-reusable-code.html#cb373-3" aria-hidden="true" tabindex="-1"></a>  RRS_size<span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb373-4"><a href="writing-reusable-code.html#cb373-4" aria-hidden="true" tabindex="-1"></a>  RRS<span class="ot">=</span> <span class="fu">character</span>(<span class="at">length=</span><span class="dv">0</span>)</span>
+<span id="cb373-5"><a href="writing-reusable-code.html#cb373-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (RRS_size <span class="sc">&lt;</span> size) {</span>
+<span id="cb373-6"><a href="writing-reusable-code.html#cb373-6" aria-hidden="true" tabindex="-1"></a>    yeast_PPI_random<span class="ot">=</span> all_PPI_filtered[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span> <span class="fu">length</span>(all_PPI_filtered), sampling_number, <span class="at">replace=</span>F)]</span>
+<span id="cb373-7"><a href="writing-reusable-code.html#cb373-7" aria-hidden="true" tabindex="-1"></a>    RRS<span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">c</span>(RRS, yeast_PPI_random))</span>
+<span id="cb373-8"><a href="writing-reusable-code.html#cb373-8" aria-hidden="true" tabindex="-1"></a>    RRS_overlap<span class="ot">=</span> <span class="fu">intersect</span>(RRS, PPI_PPiseq)</span>
+<span id="cb373-9"><a href="writing-reusable-code.html#cb373-9" aria-hidden="true" tabindex="-1"></a>    RRS_size<span class="ot">=</span> <span class="fu">length</span>(RRS_overlap)</span>
+<span id="cb373-10"><a href="writing-reusable-code.html#cb373-10" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb373-11"><a href="writing-reusable-code.html#cb373-11" aria-hidden="true" tabindex="-1"></a>  RRS_duplicate_marked <span class="ot">=</span> <span class="fu">mark_duplicates_fast</span>(RRS_overlap)</span>
+<span id="cb373-12"><a href="writing-reusable-code.html#cb373-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (RRS_duplicate_marked[,<span class="dv">1</span>])</span>
+<span id="cb373-13"><a href="writing-reusable-code.html#cb373-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb373-14"><a href="writing-reusable-code.html#cb373-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-15"><a href="writing-reusable-code.html#cb373-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ... and later ...</span></span>
+<span id="cb373-16"><a href="writing-reusable-code.html#cb373-16" aria-hidden="true" tabindex="-1"></a><span class="fu">Random_reference</span>(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)</span></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <hr />
